@@ -141,6 +141,7 @@ void main() {
 }
 ```
 ### List
+
 ```
 void main() {
   // 가능할 떄는 var 자료형class를 사용할떄
@@ -152,7 +153,9 @@ void main() {
   List<int> num = [1, 2, 3, 4];
 }
 ```
+
 Dart의 list에서는 if와 for을 지원 한다.
+
 ```
 void main() {
   // list if for을 지원 한다.
@@ -167,6 +170,18 @@ void main() {
   // if (giveMeFive) {
   //   numbers.add(5);
   // }
+}
+```
+#### for
+```
+void main() {
+  var oldFriends = ["Lee", "Han"];
+  var newFriends = [
+    "Kim",
+    "Ryu",
+    for (var friend in oldFriends) "😁 $friend",
+  ];
+  print(newFriends); //[Kim, Ryu, 😁 Lee, 😁 Han]
 }
 ```
 ### String Interpolation
@@ -184,3 +199,34 @@ void main() {
 
 ```
 변수만 추가 할경우 $변수명만 작성을 하면 되고 계산이 필요한 경우 ${변수명 계산식}을 작성하면 된다. 
+### Maps
+Mpa는 JS의 Object나 python의 dictionary같은 거다. 일반적으로 map은 key와 value를 연결하는 객체이다.
+```
+void main() {
+  var player = {
+    "name": "Lee",
+    "age": 20,
+    "isAlive": true,
+  };
+  Map<int, bool> num = {
+    0: false,
+    1: true,
+  };
+  Map<List<int>, bool> num1 = {
+    [0]: false,
+  };
+  
+}
+```
+만약 map으로 key와 value를 가진 object를 만든다면 너무 복잡하다 class 추천한다
+```
+// X
+void main(){
+List<Map<String, Object>> players = [
+    {"name": "Lee", "xp" = 0},
+    {"name": "Lee", "xp" = 0}
+    ]
+}
+```
+### Sets
+Set에 속한 모든 아이템들이 유니크해야될 때 사용한다. 유니크할 필요가 없다면 List를 사용하면 된다.
