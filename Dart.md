@@ -324,7 +324,28 @@ void main() {
 }
 ```
 ### QQ Operator
+```
+// ??를 사용 할수 도 있다 왼쪽이 null이 아닐떄 오른쪽이 null일떄
+String capitalizeName(String? name) => name?.toUpperCase() ?? "ANON";
+// 삼항 연산자로 단순화 시킬수 있지만 
+// name != null ? name.toUpperCase() : "ANON";
 
+// name의 값이 null이 들어간다면 
+//{
+//   if (name != null) {
+//     return name.toUpperCase();
+//   }
+//   return "ANON";
+// }
+
+void main() {
+  print(capitalizeName("lee"));
+  print(capitalizeName(null));
+
+  String? name = null;
+  name ??= "Lee"; // name의 값이 null 이라면 값을 할당해준다
+}
+```
 ### enum
 ```
 enum Monster { Orc, Slime }
