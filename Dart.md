@@ -360,7 +360,7 @@ void main() {
   print(reverseListOfNumbers([1, 2, 3]));
 }
 
-
+// Map에 typedef사용하기
 typedef UserInfo = Map<String, String>;
 String Hello(UserInfo userInfo) => "Hi ${userInfo['name']}";
 
