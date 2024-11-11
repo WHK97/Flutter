@@ -1,15 +1,6 @@
-String capitalizeName(String? name) => name?.toUpperCase() ?? "ANON";
-// name != null ? name.toUpperCase() : "ANON";
-//{
-//   if (name != null) {
-//     return name.toUpperCase();
-//   }
-//   return "ANON";
-// }
+typedef UserInfo = Map<String, String>;
+String Hello(UserInfo userInfo) => "Hi ${userInfo['name']}";
 
 void main() {
-  print(capitalizeName("lee"));
-  print(capitalizeName(null));
-  String? name = null;
-  name ??= "Lee"; // name의 값이 null 이라면 값을 할당해준다
+  print(Hello({'name': "Lee"}));
 }

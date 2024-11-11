@@ -346,6 +346,28 @@ void main() {
   name ??= "Lee"; // name의 값이 null 이라면 값을 할당해준다
 }
 ```
+### Typedef
+기존 변수앞에 있는 데이터 타입을 내가 정한 이름으로 바꿔 붙일 수 있다.
+```
+typedef ListOfInts = List<int>;
+
+ListOfInts reverseListOfNumbers(List<int> list) {
+  var reversd = list.reversed;
+  return reversd.toList();
+}
+
+void main() {
+  print(reverseListOfNumbers([1, 2, 3]));
+}
+
+
+typedef UserInfo = Map<String, String>;
+String Hello(UserInfo userInfo) => "Hi ${userInfo['name']}";
+
+void main() {
+  print(Hello({'name': "Lee"}));
+}
+```
 ### enum
 ```
 enum Monster { Orc, Slime }
