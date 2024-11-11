@@ -1,16 +1,13 @@
+String Hello(
+    {required String name, required int age, required String country}) {
+  return "Hello $name, you are $age, and you com from $country";
+}
+
 void main() {
-  Set<int> numbers = {
-    1,
-    2,
-    3,
-  };
-  numbers.add(1);
-  print(numbers); //{1, 2, 3}
-  List<int> number2 = [
-    1,
-    2,
-    3,
-  ];
-  number2.add(1);
-  print(number2); //[1, 2, 3, 1]
+  // print(Hello("Lee", 20, "korean"));
+  print(Hello(
+    name: "Lee",
+    country: "korean",
+    age: 20,
+  ));
 }

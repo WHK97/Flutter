@@ -230,3 +230,81 @@ List<Map<String, Object>> players = [
 ```
 ### Sets
 Set에 속한 모든 아이템들이 유니크해야될 때 사용한다. 유니크할 필요가 없다면 List를 사용하면 된다.
+```
+void main() {
+  // Set을 사용할때  
+  Set<int> numbers = {
+    1,
+    2,
+    3,
+  };
+  numbers.add(1);
+  print(numbers); //{1, 2, 3}
+
+  // List를 사용할떄
+  List<int> number2 = [
+    1,
+    2,
+    3,
+  ];
+  number2.add(1);
+  print(number2); //[1, 2, 3, 1]
+}
+
+```
+## Function
+```
+String Hello(String name) {
+  return "Hello $name nice to meet you!";
+}
+// 1라인 함수라면 arrow syntax룰 사용하면 간단하게 함수를 사용할 수 있다,
+// String Hello(String name) => "Hello $name nice to meet you!";
+
+void main() {
+  print(Hello("Lee")); // Hello Lee nice to meet you!
+}
+```
+### Named Parameters
+```
+String Hello({String name, int age, String country}) {
+  return "Hello $name, you are $age, and you com from $country";
+}
+void main() {
+    print(Hello("Lee", 20, "korean"));
+}
+```
+함수에 다양한 파라메터를 넣게 된다면 순서대로 넣어야 원하는 값이 들어간다 하지만 넣어야 할 값이 많아 질 경우 일일이 확인하는데 오래걸리고 비효율 적이다
+
+```
+// {}로 감싸고 대체할 값을 작성 해야 한다,
+String Hello({String name = "홍길동", int age = 0, String country = "공백"}) {
+  return "Hello $name, you are $age, and you com from $country";
+}
+
+void main() {
+  print(Hello(
+    name: "Lee",
+    age: 20,
+    country: "korean",
+  ));
+}
+```
+named parameter를 이용하면 된다. named parameter는 null safty가 적용 되기 때문에 함수에 값이 안들어올 경우 대체할 값을 미리 넣어야 한다
+Hello()에 마우스를 대면 적어얄 파라메터들을 확인할 수 있다.
+
+임의로 지정한 값이 아니라 사용자로부터 무조건값을 받아야 한다면 required를 명시해준면 된다
+```
+String Hello(
+    {required String name, required int age, required String country}) {
+  return "Hello $name, you are $age, and you com from $country";
+}
+
+void main() {
+  // print(Hello("Lee", 20, "korean"));
+  print(Hello(
+    name: "Lee",
+    age: 20,
+    country: "korean",
+  ));
+}
+```
