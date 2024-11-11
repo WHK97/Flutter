@@ -86,8 +86,30 @@ void main() {
   print(name?.isEmpty); // false
 }
 ```
-### late
 
 ### Final
+```
+void main() {
+  final age = 20; // JS의 const처럼 사용이 가능하다.
+  // age = 21; 에러
 
-### const
+  final String name = "Lee"; // final뒤에 변수타입을 지정할 수 도 있다
+  // name = "Kim" // 에러
+}
+
+```
+
+### late
+late는 fainal이나 var뒤에 붙여 줄수 있다. 보통 변수에 값을 넣어 저장하기 때문에 late를 사용이 적다 하지만 API요청후 그 값을 변수에 넣어야 할 경우에 late를 이용에 접근을 막아 요청받은 후에 값을 넣어준다.
+```
+void main() {
+  // late는 초기 데이터 없이 변수를 선언할 수 있게 해준다.
+  late final String name;
+  // API요청 후 나중에 변수에 넣어준다.
+  // print(name); //값을 넣기전에 접근을 막아준다.
+  name = "Lee";
+}
+
+```
+### const (Compile-time constant)
+dart에서 const는 javascript나 typescript와는 다르다. 두개경우 const는 dart의 final과 비슷하다.
