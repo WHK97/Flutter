@@ -265,6 +265,7 @@ void main() {
 }
 ```
 ### Named Parameters
+Positional parameters: 함수에 정의되어있는 파라미터 순서대로 들어감.
 ```
 String Hello({String name, int age, String country}) {
   return "Hello $name, you are $age, and you com from $country";
@@ -307,4 +308,32 @@ void main() {
     country: "korean",
   ));
 }
+```
+### Optional Positional Parameters
+Positional Parameters는 순서대로 입력을 하고 Named Pareameters는 이름의 지정해서 입력을한 두가지 모두 모든 argument에 사용하지만 한가지만 지정하고 싶을 때 사용을 한다.
+```
+// 원하는 값을 []를 사용하고 Null Safty를 하고 값이 안들어 왔을 떄 대체할 값을 넣어주면 된다.
+String Hello(String name, int age, [String? country = "Korean"]) =>
+    "Hello $name, you are $age, and you com from $country";
+
+void main() {
+  print(Hello(
+    "Lee",
+    20,
+  ));
+}
+```
+### QQ Operator
+
+### enum
+```
+enum Monster { Orc, Slime }
+void main() {
+  // 하나의 값만 할당
+  Monster monster = Monster.Orc;
+  // 리스트해서 여러가지의 값을 변수에 할당
+  List<Monster> monsters = Monster.values;
+  print(monsters.first.name); //Orc
+}
+
 ```
