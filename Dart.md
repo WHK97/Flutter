@@ -113,3 +113,74 @@ void main() {
 ```
 ### const (Compile-time constant)
 dart에서 const는 javascript나 typescript와는 다르다. 두개경우 const는 dart의 final과 비슷하다.
+final과 const는 상수라는건 같지만 const는 프로그램 실행 전에 값이 확정되어야 합니다.
+```
+void main() {
+  const name = "Lee";
+  // name = 'Kim'; // final과 비슷하다.
+  // const는 compile-time에 알고 있는 값이어야 한다.
+
+  // const는 컴파일 할 떄 알고 있는 값에 사용한다. 최종적으로 앱스토어에 올리는 값을 저장해준다.
+  const API = "API주소";
+}
+
+```
+- final: 런타임때 값이 결정
+- const: 컴파일 타임떄 값이 결정
+## 데이터 타입
+### 기본 데이터 타입
+```
+void main() {
+  /// Dart에서의 모든 자료형은 object로 이루어져있다.
+  String string = "문자형"; // 문자형
+  bool isTrue = true; // bool형
+  int num1 = 20; // 숫자형
+  double num2 = 3.14; // 소수형
+  num a = 3.14;
+  num b = 3;
+}
+```
+### List
+```
+void main() {
+  // 가능할 떄는 var 자료형class를 사용할떄
+  var numbers = [1, 2, 3, 4];
+  print(numbers); // [1,2,3,4]
+  numbers.add(5);
+  print(numbers); //  [1,2,3,4,5]
+
+  List<int> num = [1, 2, 3, 4];
+}
+```
+Dart의 list에서는 if와 for을 지원 한다.
+```
+void main() {
+  // list if for을 지원 한다.
+  var giveMeFive = true;
+  var numbers = [
+    1,
+    2,
+    3,
+    4,
+    if (giveMeFive) 5, //밑에 if문처럼 사용이 가능하다.
+  ];
+  // if (giveMeFive) {
+  //   numbers.add(5);
+  // }
+}
+```
+### String Interpolation
+text에 변수를 추가하는 방법이다.
+
+```
+void main() {
+  var name = "Lee";
+  var age = 20;
+  var greeting = "Hello everyone, my name is $name, nice to meet yuo!";
+  print(greeting); // Hello everyone, my name is Lee, nice to meet yuo!
+  var Hello = "Hello my name is $name and I'm ${age + 2}!";
+  print(Hello); // Hello my name is Lee and I'm 22!
+}
+
+```
+변수만 추가 할경우 $변수명만 작성을 하면 되고 계산이 필요한 경우 ${변수명 계산식}을 작성하면 된다. 
