@@ -395,7 +395,73 @@ void main() {
 
 ```
 ### Constructors
+직접 값을 받아 class에 값을 넣고 싶다면 생성자(Constructors)함수를 사용해서 값을 받아 오면 된다.
 ```
+class Player {
+  // Null Safty로인해 late함수를 사용해서 나중에 값이 들어 온다는걸 표시해줘야한다.
+  late String name;
+  late int xp;
+  Player(String name, int xp){
+     // 생성자함수에 값을 한번 받은 뒤에 초기화 과정을 거치기 때문에 late를 사용해줘야 한다,
+     this.name = name; // 변수 초기화
+     this.xp = xp;
+     }
+  void Hello() {
+    print("Hellp my name is $name");
+  }
+}
+
+void main() {
+  var player = Player("Lee", 1500);
+  var player2 = Player("Kim", 2500);
+  player.Hello(); // Lee
+  player2.Hello(); // Kim
+}
+
+```
+위 코드 처럼 할 수 있지만 name과 int가 중복 되고 있다
+```
+class Player {
+  // 여기도 똑같이 값이 비어 있는데 late를 사용하지 않냐면 생성자에서 즉시 초기화를 시켜주기 떄문이다.
+  final String name;
+  final int xp;
+  // this.name을 하면 초기화(할당)을 하기 때문에 바로 변수에 들어가게 된다 그래서 late를 사용안해줘도 된다.
+  Player(this.name, this.xp); 
+  void Hello() {
+    print("Hellp my name is $name");
+  }
+}
+```
+###  Named Constructor Parameters
+정확한 위치의 값을 순서대로 입력을 해야하는데 너무 많은 Parameters 받을 경우에 위치를 전부 기억하기 힘들다
+```
+class Player {
+  String name;
+  int xp;
+  int age;
+  String team;
+  // Named Parameter 처럼 {}를 해주고 Null safty로 인해 required 작성해주면 된다.
+  Player({
+    required this.name,
+    required this.xp,
+    required this.age,
+    required this.team,
+  });
+  // {// this.name = name;// this.xp = xp;}
+  void Hello() {
+    print("Hellp my name is $name");
+  }
+}
+
+void main() {
+  var player = Player(
+    name: "Lee",
+    xp: 1500,
+    age: 20,
+    team: "red",
+  );
+  player.Hello(); // Lee
+}
 
 ```
 ### enum
