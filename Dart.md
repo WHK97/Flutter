@@ -464,6 +464,96 @@ void main() {
 }
 
 ```
+### Named Constructor
+```
+class Player {
+  final String name;
+  int xp, age;
+  String team;
+  Player({
+    required this.name,
+    required this.xp,
+    required this.age,
+    required this.team,
+  });
+  // Named Constructor
+  Player.bluePlayer({required String name, required int age})
+      // : 넣음으로써 Dart에게 여기서 Player객체를 초기화 하겠다고 알려준다.
+      : this.name = name, // Player클래스를 초기화 하는것
+        this.age = age,
+        this.team = "blue",
+        this.xp = 0;
+  //간소화된 방법
+  // Player.bluePlayer({
+  //   required this.name,
+  //   required this.age,
+  //   this.xp = 0,
+  //   this.team = 'red',
+  // });
+  // positional Constructor
+  Player.redPlayer(String name, int age)
+      : this.name = name,
+        this.age = age,
+        this.team = "red",
+        this.xp = 0;
+  //간소화방법 ㅔㅐ
+  //Player.redPlayer(this.name, this.age, [this.team = 'red', this.xp = 0]);
+
+}
+
+void main() {
+  var playerBlue = Player.bluePlayer(
+    name: "Lee",
+    age: 20,
+  );
+  var playerRed = Player.redPlayer(
+    "Lee",
+    20,
+  );
+}
+
+```
+### fromJson
+```
+class Player {
+  String? name;
+  int? xp;
+  String? team;
+  //
+  Player.fromJson(Map<String, dynamic> playerJson)
+      : name = playerJson["name"],
+        xp = playerJson["xp"],
+        team = playerJson["team"];
+
+  void Hello() {
+    print("Hellp my name is $name");
+  }
+}
+
+void main() {
+  var apiData = [
+    {
+      "name": "Lee",
+      "team": "red",
+      "xp": 0,
+    },
+    {
+      "name": "Kim",
+      "team": "red",
+      "xp": 0,
+    },
+    {
+      "name": "Han",
+      "team": "red",
+      "xp": 0,
+    },
+  ];
+  apiData.forEach((playerJson) {
+    var player = Player.fromJson(playerJson);
+    player.Hello();
+  });
+}
+```
 ### enum
 ```
 enum Monster { Orc, Slime }
