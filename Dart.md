@@ -595,10 +595,79 @@ class Player {
 }
 
 void main() {
-  var kim = Player(name: "Kim", xp: 1200, team: Team.Blue)
+  var kim = Player(name: "Kim", xp: 1200, team: Team.Blue) // enum명.으로 원하는 값을 작성
     ..name = 'Lee'
     ..xp = 100000
     ..team = Team.red;
+}
+
+```
+### Abstract(추상화) Classes
+추상화 클래스로는 객체를 생성할 수 없다. 다른 클래스들이 직접구현 해야하는 매소드들을 모아 놓은 청사진 같은 거다.
+```
+abstract class Human { // 매소드들은 작동은 하지 않는다.ㅈ
+  void walk();
+}
+class Player extends Human { // 상속을 해서 사용이 가능하다.
+
+  void walk() { // 없다면 에러표시가 날꺼다
+    print("im walking");
+  }
+}
+void main() {}
+```
+### Inheritance(상속)
+class Human {
+  final String name;
+  Human({required this.name});
+  void sayHello() {
+    print("Hi my name is $name");
+  }
+}
+
+enum Team { Bule, Red }
+
+class Player extends Human {
+  final Team team;
+  //supr클래스로 name의 값을 Human클래쓰에 전달해준다,
+  Player({required this.team, required String name}) : super(name: name);
+  @override
+  void sayHello() {
+    super.sayHello();
+    print("and I play for ${team}");
+  }
+}
+
+void main() {
+  // name값을 Player클래스한테 전달해준다.
+  var player = Player(team: Team.Red, name: "Kim");
+  player.sayHello();
+}
+### Mixins
+Mixins는 생성자가 없는 클래스를 의미한다. 코드를 여러 클래스에서 재사용을 할 수 있다.
+```
+mixin Strong {
+  final double strengthLevel = 1500.99;
+}
+// mixin을 붙여 사용한다.
+mixin QyickRubber {
+  void runQick() {
+    print("RUUUUUUN");
+  }
+}
+
+enum Team { Bule, Red }
+
+// with로 클래스에 mixin을 추가 할때 사용한다.
+class Player with Strong, QyickRubber {
+  final Team team;
+  Player({required this.team});
+}
+
+void main() {
+  var player = Player(team: Team.Bule);
+  print(player.strengthLevel);
+  player.runQick();
 }
 
 ```
