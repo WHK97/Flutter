@@ -1,38 +1,18 @@
+enum Team { red, Blue }
+
 class Player {
   String? name;
   int? xp;
-  String? team;
-  //
-  Player.fromJson(Map<String, dynamic> playerJson)
-      : name = playerJson["name"],
-        xp = playerJson["xp"],
-        team = playerJson["team"];
-
+  Team team;
+  Player({required this.name, required this.xp, required this.team});
   void Hello() {
     print("Hellp my name is $name");
   }
 }
 
 void main() {
-  var apiData = [
-    {
-      "name": "Lee",
-      "team": "red",
-      "xp": 0,
-    },
-    {
-      "name": "Kim",
-      "team": "red",
-      "xp": 0,
-    },
-    {
-      "name": "Han",
-      "team": "red",
-      "xp": 0,
-    },
-  ];
-  apiData.forEach((playerJson) {
-    var player = Player.fromJson(playerJson);
-    player.Hello();
-  });
+  var kim = Player(name: "Kim", xp: 1200, team: Team.Blue)
+    ..name = 'Lee'
+    ..xp = 100000
+    ..team = Team.red;
 }

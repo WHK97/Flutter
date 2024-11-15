@@ -554,15 +554,51 @@ void main() {
   });
 }
 ```
-### enum
+#### Cascade Notation
+중복사용되는 변수를 줄일 수 가 있다
 ```
-enum Monster { Orc, Slime }
+class Player {
+  String? name;
+  int? xp;
+  String? team;
+  Player({required this.name, required this.xp, required this.team});
+  void Hello() {
+    print("Hellp my name is $name");
+  }
+}
+
 void main() {
-  // 하나의 값만 할당
-  Monster monster = Monster.Orc;
-  // 리스트해서 여러가지의 값을 변수에 할당
-  List<Monster> monsters = Monster.values;
-  print(monsters.first.name); //Orc
+    <!-- var kim = Player(name: "Kim", xp: 1200, team: "red");
+    kim.name = 'Lee';
+    kim.xp = 100000;
+    kim.team = "blue"; -->
+  var kim = Player(name: "Kim", xp: 1200, team: "red")
+    ..name = 'Lee'
+    ..xp = 100000
+    ..team = "blue";
+}
+```
+;을 지우고 ..으로 중복되는 변수명을 줄일 수 있다.
+### enum
+값을 넣을 때 오타로 인해 원하는 값을 잘못들어 갈 수 있다. 실수하지않게 도와 주는게 enum이다.
+```
+enum Team { red, Blue }
+
+class Player {
+  String? name;
+  int? xp;
+  Team team; // 원하는 enum은 타입으로 작성해주면 enum안에 있는 값만 들어 가게 된다.
+  Player({required this.name, required this.xp, required this.team});
+  void Hello() {
+    print("Hellp my name is $name");
+  }
+}
+
+void main() {
+  var kim = Player(name: "Kim", xp: 1200, team: Team.Blue)
+    ..name = 'Lee'
+    ..xp = 100000
+    ..team = Team.red;
 }
 
 ```
