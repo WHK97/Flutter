@@ -1,11 +1,3 @@
-class Human {
-  final String name;
-  Human({required this.name});
-  void sayHello() {
-    print("Hi my name is $name");
-  }
-}
-
 mixin Strong {
   final double strengthLevel = 1500.99;
 }
