@@ -19,11 +19,11 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      // Row 스크롤
-      // scrollDirection: Axis.horizontal,
+      // Column 상하 스크롤
       child: Column(
         children: [
           SingleChildScrollView(
+            // Row 좌우 스크롤
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
