@@ -42,11 +42,13 @@ class App extends StatelessWidget {
                             fontWeight: FontWeight.w800,
                           ),
                         ),
-                        Text("Welcom back",
-                            style: TextStyle(
-                              color: Colors.white.withOpacity(0.8),
-                              fontSize: 18,
-                            )),
+                        Text(
+                          "Welcom back",
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(0.8),
+                            fontSize: 18,
+                          ),
+                        ),
                       ],
                     )
                   ],

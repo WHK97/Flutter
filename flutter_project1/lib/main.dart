@@ -18,12 +18,30 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: [
-        Container(height: 100, color: Colors.blue),
-        Flexible(flex: 1, child: Container(height: 100, color: Colors.red)),
-        // 높이에 상관없이 전부 차지한다.
-        Expanded(child: Container(color: Colors.green))
+        Container(
+          width: 500,
+          height: 500,
+          color: Colors.red,
+        ),
+        Positioned(
+          right: 0,
+          left: 0,
+          child: Container(
+            width: 400,
+            height: 400,
+            color: Colors.blue,
+          ),
+        ),
+        Align(
+          alignment: Alignment(-1, -1),
+          child: Container(
+            width: 200,
+            height: 200,
+            color: Colors.yellow,
+          ),
+        ),
       ],
     );
   }
