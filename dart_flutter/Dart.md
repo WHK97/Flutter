@@ -688,3 +688,27 @@ void main() {
 - late는 var나 final앞에 붙여줄 수 있다. late final name; late는 초기 데이터없이 변수를 선언할 수 있게 해준다, 변수를 만드는게 값없이 작성이 가능하다. 나중에 API값등을 받아 넣어주기 위해 사용한다. 값을 넣지 않은 상태에서 name을 사용할려고 하면 다트에서 막아줄것이다. flutter data fetching할 때 유용하다.
 
 - const키워드는 JS에의 const와 다르다. final은 컴파일타임 시점에 작동을 하며 const는 런타임때 결정이 된다. const는 컴파일 할떄 알고 있는 값에 사용해야 한다. 이미확정된값에는 const APi나 사용자한테 값을 받아와야 한다면 final을 사용해야 된다.
+## 데이터 타입
+- 데이터타입에는 String, int, double, bool, List, Map등이 있다.
+
+- List var numbers = [1,2,3,4,5]; List<int> numbers = [1,2,3,4,5]; 자료형을 명시할떄는 클래스를 작성할 때 사용한다. 그리고 되도록이면 List var numbers = [1,2,3,4,5,];로 마무리를 해주면 좋다. collection if로 list를 만들 수 있다 
+```
+void main(){
+  var newNumber = true
+  var numbers = [1,2,3,4, if(newNumber) 5,]
+  if(newNumber) numbers.add(5); // 같다
+}
+```
+- 텍스트에 변수를 추가 할 수 있다 var hello = "Hello my nams is $name ${age +2}" 변수명앞에 $붙여 사용하먄 된다. 숫자변수에 사칙연산을 하고 싶아면 {}감싸주면 된다.
+
+- collection for of도 있다.
+```
+void main(){
+  var newNumber = [5,6];
+  var numbers = [1,2,3,4, for(var number in newNumber ) "@ $number",];
+  for (var number in newNumber) {numbers.add(number);} // 같다
+}
+```
+- Map JS의 Object라고 보면 된다. var player = {"name" : "Lee", "xp" : 0,}; Map<String, Object> player = {"name" : "Lee", "xp" : 0,}; object는 어떤것이든 올수있다.                            var human = [ {"name": "Lee", "age": 20} ]; 하지만 map을 많이 사용하지않는게 좋다 API같은걸 추가 할때 class를 권장한다.
+
+- var numbers= {1,2,3,4,}; Set<int> numbers = {1,2,3,4,}; set과 list의 차이점은 set은 유니크하다  set.add(4); ,list.add(4); 하게 되면 1 2 3 4, 1 2 3 4 4 의 결과가 나온다.
