@@ -712,3 +712,29 @@ void main(){
 - Map JS의 Object라고 보면 된다. var player = {"name" : "Lee", "xp" : 0,}; Map<String, Object> player = {"name" : "Lee", "xp" : 0,}; object는 어떤것이든 올수있다.                            var human = [ {"name": "Lee", "age": 20} ]; 하지만 map을 많이 사용하지않는게 좋다 API같은걸 추가 할때 class를 권장한다.
 
 - var numbers= {1,2,3,4,}; Set<int> numbers = {1,2,3,4,}; set과 list의 차이점은 set은 유니크하다  set.add(4); ,list.add(4); 하게 되면 1 2 3 4, 1 2 3 4 4 의 결과가 나온다.
+
+## Function
+
+- void Hello(String name){print("Hello my name is $name");}Hello("Lee");
+  - parameter: 함수나 메서드를 정의할 때, 외부로부터 값을 전달받기 위해 사용하는 변수 void Hello(파라미터){}
+
+- 다트는 네임드파라미터를 지원한다. 더 많은 정보를 파라미터에 전달할때 유용하다 기존 포지셔널파라미터는 원하는 값이 해당위치에 장확하게 들어가야하기 떄문에 입력의 양이 많을수록 찾기 힘들다 그럴때 네임드파라미터를 사용한다.
+```
+// 포지셔널 파라미터
+String player(String name, int age, String gender){
+  return "my name is $name, and $age $gender !";
+}
+void main(){
+  player("Lee",20,"Man"); 
+}
+```
+```
+// 네임드 파라미터
+String player({required String name, required int age, String gender = "NoN"}) {
+  return "my name is $name, and $age $gender !";
+}
+void main(){
+  player(name:"Lee",age: 20,gender: "Man"); 
+}
+```
+파라미터에{}를 감싸주고 required 추가해주면 사용이 가능하다 required를 추가 하는 이유는 호출 시 반드시 값을 제공하도록 강제한다. 또는 파라미터에 값이 안들어 올경우 임의값이 들어가도록 해주면 된다(강제하지는 않는다.).
