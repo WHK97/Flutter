@@ -737,4 +737,34 @@ void main(){
   player(name:"Lee",age: 20,gender: "Man"); 
 }
 ```
-파라미터에{}를 감싸주고 required 추가해주면 사용이 가능하다 required를 추가 하는 이유는 호출 시 반드시 값을 제공하도록 강제한다. 또는 파라미터에 값이 안들어 올경우 임의값이 들어가도록 해주면 된다(강제하지는 않는다.).
+파라미터에{}를 감싸주고 required 추가해주면 사용이 가능하다 required를 추가 하는 이유는 호출 시 반드시 값을 제공하도록 강제한다. 또는 파라미터에 값이 안들어 올경우 임의값이 들어가도록 해주면 된다(강제하지는 않는다.)
+
+- Optional Positional Parameters 기존 포지션파라미터는 위치에 맞게 작성해야 하고 네임드파라미터는 이름을 작성해줘야한다. 만약 하나만 네임드 파라미터를 적용하고 required사용하고싶지 않을떄 사용하면된다.
+```
+String hello(String name, int age, [String? country = "Korea"]) => "Hello $name, you are $age years old from $country";
+void main(){
+  hello("Lee",12);
+}
+```
+- QQ ??, ?= 플러터에서 많이 사용된다. 
+```
+String capitalizeName(String? name) =>
+    // name != null ? name.toUpperCase() : "ANON";
+    name?.toUpperCase() ?? "ANON";
+void main() {
+  print(capitalizeName("lee")); //LEE
+    String? name;
+   name ??= "Kim";
+}
+```
+- typedef는 자료형에 별칭(alias)를 붙일수 있다. typedef playerList = List<Map<String, Object>>;
+```
+typedef playerList = List<Map<String, Object>>;
+void main() {
+  playerList players;
+  players = [
+    {"name": "Lee", "xp": 20}
+  ];
+}
+
+```

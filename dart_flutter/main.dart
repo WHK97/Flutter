@@ -1,7 +1,7 @@
-String player({required String name, required int age, String gender = "NoN"}) {
-  return "my name is $name, and $age $gender !";
-}
-
+typedef playerList = List<Map<Object, Object>>;
 void main() {
-  player(name: "", age: 20, gender: "Man");
+  playerList players;
+  players = [
+    {"name": "Lee", "xp": 20}
+  ];
 }
