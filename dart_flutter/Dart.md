@@ -768,3 +768,85 @@ void main() {
 }
 
 ```
+# Class 요약
+ - class만들기 class Player{ String name;// property }
+  - property: class의 데이터를 저장하는 변수
+```
+class Player { String name = "Lee"; // 프로퍼티 
+void hello(){prtin("Hello my name is $name");} // 매서드}
+void main() { Player player = Player(); // 인스턴스생성 }
+```
+- Constructors(생성자) method는 argument로 값을 받을수 있는 method 이다. Constructors는 class의 이름과 같아야한다
+```
+class Player {
+  late final String name; // late가 없으면 Play()매소드 에러 값이 없기때문에 
+  late int xp;
+  Player(String name, int xp) { // 생성자매소드는 class의 이름과 같아야한다.
+    this.name = name; // this.name은 class의 name을 가르킨다.
+    this.xp = xp;
+  }
+}
+void main() {
+  Player player = Player("Lee", 20); // 인스턴스생성 아규먼트에 값이 생성자매소드에 들어가게 된다.
+}
+
+```
+위 생성자는 this.name = name;을 통해서 변수가 할당 되어 late가 필요하지만 밑 코드와 같은경우는 파라미터에서 name변수가 바로 할당되기 때문에 필요가 없다.
+```
+class Player {
+  final String name;
+  int xp;
+  Player(this.name, this.xp);
+}
+```
+- 생성자도 네임드파라미터를 사용할 수 있다.
+```
+class Player {
+  final String name;
+  int xp;
+  Player({required this.name,required this.xp});
+}
+void main() {
+  Player player = Player(name: "Kim", xp: 20); // 인스턴스생성
+}
+```
+- 네임드생성자 만약 내가 여러개의 생성자를 만들고 싶을때 사용한다.
+```
+class Player {
+  final String name;
+  int xp, age;
+  String team;
+
+  Player({required this.name, required this.age, required this.team,required this.xp,});
+  Player.redPlayer({ required String name, required int age,}) // 1. argument에서 받은 같을 밑에 : 으로 보내준다.
+    : this.age = age, // 2. 위 파라미터값을 this.age에 초기화 해준다.
+        this.name = name,
+        this.team = "red", // 값을 고정으로 초기화
+        this.xp = 0;
+}
+```
+여기서 :으로 초기화(값할당)하는 이유는 1. 부모 class의 프로퍼티의 final,const인경우 2. 부모 class의 생성자에 있는 변수를 사용하기때문이다.
+- Cascade Notation은 기존 재선언을 간단하게 하는 방법이다.
+```
+class Player {
+  String name; int xp; String team;
+  Player({required this.name, required this.xp, required this.team}) {}
+}
+void main() {
+  var lee = Player(name: "Lee", xp: 0, team: "red");
+  lee.name = "Kim"; lee.team = "blue"; lee.xp = 100;
+}
+
+```
+```
+void main() {
+  var lee = Player(name: "Lee", xp: 0, team: "red")
+  ..name = "Kim" ..team = "blue" ..xp = 100;
+}
+```
+;을 지우고 재선언하는곳에 ..을 하면 중복으로 입력된 변수명을 간단하게 할 수 있다.
+
+- enum은 개발자가 실수하지 않게 도와주는 역활을 해준다. enum Team {red, blue}설정을 하면 Team team; 하면 enum Team안에 것만 사용이 가능하다.
+- 추상화 클래스는 기존클래스처럼 작성할 일이 없는 클래스이다. 추상화클래스는 객체를 생성을 할 수 없다 abstract class Human void walk() {} // 메소드이름과 반환타입 파라미터만 정할 수 있다.
+- 상속 Class 클래스명 extends 부모클래스 {}로 상속을 할 수 있다 상속을 하는 이유는 중복된 값을 사용해야 할때 재사용하기 위해서 이다. 부모클래스의 프러퍼티를 사용할경우 클래스명({required 부모클래스 프로퍼티}) : super(부모클래스 프로퍼티);로 상속할 수 있다 자세한건 [주소](main.dart)예제
+- Mixins은 생성자가 없는 클래스를 의미한다. mixin 클래스명{ 생성자는 없어야 한다} class 클래스명 with mixin클래스로 사용을 한다. [예시](main.dart)
