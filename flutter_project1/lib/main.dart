@@ -4,6 +4,7 @@ void main() {
   runApp(
     MaterialApp(
       home: Scaffold(
+        backgroundColor: Color(0xFF181818),
         appBar: AppBar(
           title: Text("Study to Container"),
         ),
@@ -18,30 +19,23 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Column(
       children: [
-        Container(
-          width: 500,
-          height: 500,
-          color: Colors.red,
-        ),
-        Positioned(
-          right: 0,
-          left: 0,
-          child: Container(
-            width: 400,
-            height: 400,
-            color: Colors.blue,
-          ),
-        ),
-        Align(
-          alignment: Alignment(-1, -1),
-          child: Container(
-            width: 200,
-            height: 200,
-            color: Colors.yellow,
-          ),
-        ),
+        Text("a"),
+        Row(
+          children: [
+            Container(
+              color: Colors.red,
+            ),
+            Column(
+              children: [
+                Container(
+                  color: Colors.blue,
+                ),
+              ],
+            )
+          ],
+        )
       ],
     );
   }
