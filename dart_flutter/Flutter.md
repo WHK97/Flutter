@@ -22,7 +22,11 @@ flutter run // 플러터 실행
 - Cupertino: 애플(ios)에서 제공해주는 아이콘
 이 두가지의 가이드라인을 사용한하고 원하는 디자인도 사용이 가능하다.
 ## Flutter Widget
-
+Stateless(무상태) Widget은 bulid매서드를 통해서 UI를 출력할 뿐이다.
+Stateful(상태유지) Widget은 상태를 가지고있어서 Stateful로 불린다.
+Stateful Widget은 두가지로 나뉜다. 첫번째 부분은 상태가 없는 위젯 그 자체 두번째는 부분 위젯상태로 위셎의 state는 위젯에 들어갈 데이터와 UI를 넣는곳이다.
+## [BuildContext](../toonflix/lib/header.dart)
+context에는 위젯트리에 대한정보가 담겨 있다. 매우 먼 요소를 가지고 있기 때문에 유용하다.
 ### [Header](../toonflix/lib/header.dart)
 링크 참조
 ### Developer Tools

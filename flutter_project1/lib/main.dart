@@ -1,42 +1,41 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(
-    MaterialApp(
-      home: Scaffold(
-        backgroundColor: Color(0xFF181818),
-        appBar: AppBar(
-          title: Text("Study to Container"),
-        ),
-        body: Body(),
-      ),
-    ),
-  );
+  runApp(const App());
 }
 
-class Body extends StatelessWidget {
-  const Body({super.key});
-
+class App extends StatelessWidget {
+  const App({super.key});
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text("a"),
-        Row(
+    // TODO: implement build
+    return MaterialApp(
+      home: Scaffold(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               color: Colors.red,
+              margin: const EdgeInsets.symmetric(vertical: 5),
+              width: 100,
+              height: 100,
+              child: const Text("Hello"),
             ),
-            Column(
-              children: [
-                Container(
-                  color: Colors.blue,
-                ),
-              ],
-            )
+            Container(
+              color: Colors.blue,
+              width: 100,
+              height: 100,
+              child: const Text("Hello1"),
+            ),
+            Container(
+              color: Colors.green,
+              width: 100,
+              height: 100,
+              child: const Text("Hello2"),
+            ),
           ],
-        )
-      ],
+        ),
+      ),
     );
   }
 }
