@@ -5,14 +5,17 @@ void main() {
     MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Study to Container"),
+          title: const Text("Study to Container"),
         ),
-        body: Body(),
+        body: const Body(),
       ),
     ),
   );
 }
 
+// Flexible,Expanded 차이
+// Flexible: 높이가 먼저 적용이 된다.
+// Expanded: 높이와 상관없이 적용이 된다.
 class Body extends StatelessWidget {
   const Body({super.key});
 
@@ -22,7 +25,6 @@ class Body extends StatelessWidget {
       children: [
         Container(height: 100, color: Colors.blue),
         Flexible(flex: 1, child: Container(height: 100, color: Colors.red)),
-        // 높이에 상관없이 전부 차지한다.
         Expanded(child: Container(color: Colors.green))
       ],
     );

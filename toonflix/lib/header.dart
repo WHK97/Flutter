@@ -32,6 +32,7 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // 앱에서 만들때 사용하는 색상등을 미리 지정해 사용하기 편하게 숏컷으로 만들어 준다.
       theme: ThemeData(
         textTheme: const TextTheme(titleLarge: TextStyle(color: Colors.red)),
       ),
@@ -50,6 +51,7 @@ class _AppState extends State<App> {
   }
 }
 
+// 위젯으로 추출
 class MyLargeTitle extends StatefulWidget {
   const MyLargeTitle({
     super.key,
