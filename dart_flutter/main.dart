@@ -220,5 +220,26 @@
 //   print(list); // [1,2,3,4,3]
 // }
 
-// 4.0 Function
-void main() {}
+// // 4.0 Function
+// // function은 parameter가 있고 parameter로 받은 값을 사용할 수 있다.
+// // void는 return값이 없다. main함수도 return을 하지 않기 때문에 void이다.
+// // parameter에는 타입과 이름을 작성해야 한다.
+// // 함수의 내용이 한줄인 경우 에로우 함수로도 사용이 가능하다.
+// void hello(String name) => print("Hello $name nice to meet you!");
+// void main() {
+//   hello("Lee");
+// }
+
+// 4.1 Function Named Parameter
+// 파라미터에 정보를 보낼때 순서대로 보내야 한다 보내야하는 양이 많으면 나중에 어떤 위치에 어떤 정보를 보내야하는지
+// 찾기 힘들다 그럴때 네임드 파라메터를 사용한다.
+// 기존 파라미터 부분을 {}로 감싸고 required를 붙인다 붙이는 이유는 반드시 전달되어야 함들 나타내기 때문이다
+// nullsafty와 같이 사용도 가능하고 아니며 값이 안들어올 때를 대비해 값을 미리 지정할 수 있다.
+// nullsafty같은 경우 에러발생할 수 있다.
+String hello({String name = "홍길동", int? age, required String country}) {
+  return "Hello $name, you are $age, and you country $country";
+}
+
+void main() {
+  print(hello(name: "Lee", age: 20, country: "Korean"));
+}
