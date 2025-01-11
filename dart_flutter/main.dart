@@ -230,16 +230,169 @@
 //   hello("Lee");
 // }
 
-// 4.1 Function Named Parameter
-// 파라미터에 정보를 보낼때 순서대로 보내야 한다 보내야하는 양이 많으면 나중에 어떤 위치에 어떤 정보를 보내야하는지
-// 찾기 힘들다 그럴때 네임드 파라메터를 사용한다.
-// 기존 파라미터 부분을 {}로 감싸고 required를 붙인다 붙이는 이유는 반드시 전달되어야 함들 나타내기 때문이다
-// nullsafty와 같이 사용도 가능하고 아니며 값이 안들어올 때를 대비해 값을 미리 지정할 수 있다.
-// nullsafty같은 경우 에러발생할 수 있다.
-String hello({String name = "홍길동", int? age, required String country}) {
-  return "Hello $name, you are $age, and you country $country";
+// // 4.1 Function Named Parameter
+// // 파라미터에 정보를 보낼때 순서대로 보내야 한다 보내야하는 양이 많으면 나중에 어떤 위치에 어떤 정보를 보내야하는지
+// // 찾기 힘들다 그럴때 네임드 파라메터를 사용한다.
+// // 기존 파라미터 부분을 {}로 감싸고 required를 붙인다 붙이는 이유는 반드시 전달되어야 함들 나타내기 때문이다
+// // nullsafty와 같이 사용도 가능하고 아니며 값이 안들어올 때를 대비해 값을 미리 지정할 수 있다.
+// // nullsafty같은 경우 에러발생할 수 있다.
+// String hello({String name = "홍길동", int? age, required String country}) {
+//   return "Hello $name, you are $age, and you country $country";
+// }
+// void main() {
+//   print(hello(name: "Lee", age: 20, country: "Korean"));
+// }
+
+// // 4.2 Function Optional Positional Parameters
+// // 포지션파라미터는 위치에 맞게 작성해야 한다. 만약 포지션 파라미터에서 필수적으로 작성하게 하기 싫은 경우
+// // []로감싸고 ?를 붙여 준다 그리고 디폴트 값을 붙여준다. 디폴트값이 없다면 null이 출력된다.
+// String hello(String name, int age, [String? country = "cuba"]) {
+//   return "Hello $name, you are $age, and you country $country";
+// }
+// void main() {
+//   print(hello("Lee", 13));
+// }
+
+// // 4.3 Function QQ Operator
+// // ?? ?= 조건이 참인경우 좌항을 거짓인 경우의 우항값이 출력이 된다.
+// String capitalizeName(String? name) => name?.toUpperCase() ?? "KIM";
+// //name != null ? name.toUpperCase() : "Kim";
+// void main() {
+//   print(capitalizeName("lee"));
+//   int? age; // ??로 null인 경우 값을 넣을 수 있다.
+//   age ??= 20;
+// }
+
+// // 4.4 Function Typedef
+// // type의 명을 내가 정할 수 있다.
+// typedef ListOfInts = List<int>;
+// ListOfInts reversListOfNumber(List<int> list) {
+//   var reversed = list.reversed;
+//   return reversed.toList();
+// }
+// void main() {
+//   var result = reversListOfNumber([1, 2, 3, 4, 5]);
+//   print(result);
+// }
+
+// 5.1 Class
+// Class를 가장많이 사용하기 때문에 매우 중요하다
+// class에서 property(변수)의 선언할떄 타입을 사용해 정의한다.
+// Method와 Function차이
+// Method: 클래스 내부, 객체를 통해 호출
+// Function: 클래스 외부, 함수명의로 호출
+// class Player {
+//   String name = "Lee"; // property
+//   int xp = 1500;
+//   // Method는 클래스나 객체에 사용한 함수 이다.
+//   void hello() {
+//     // Method
+//     print("Hi my name is $name");
+//   }
+// }
+// void main() {
+//   // instance생성 (클래스의 정의를 기반으로 생성된 실제 데이터)class 추상화된 데이터를 재사용할 수 있다.
+//   var player = Player(); // instance
+//   var name = player.name;
+//   print(name);
+//   player.hello();
+// }
+
+// // 5.2 class Constructors
+// // 생성자(Constructors)는 class의 이름과 같아야 한다.
+// // 생성자(Constructors)가 필요한 이유는 초기화가 필요한 작업이 있기 때문이다. 초기화가 없이 진행이 된다면 유연성이 많이 떨어지게 된다.
+// class Player {
+//   final String name;
+//   int xp = 1500;
+//   // 생성자(Constructors)
+//   Player(this.name, this.xp);
+//   void sayHello() {
+//     print("Hello my name is $name");
+//   }
+// }
+// void main() {
+//   var player1 = Player("Lee", 10);
+//   var player2 = Player("Kim", 10);
+//   player1.sayHello();
+//   player2.sayHello();
+// }
+
+// // 5.3 class Named Constructors Parameters
+// // Function의 파라미터처럼 생성자 argument를 네임드 파라미터처럼 사용이 가능하다.
+// class Player {
+//   final String name;
+//   int xp = 1500;
+//   String team;
+//   int age;
+//   // 생성자(Constructors)
+//   Player(
+//       {required this.name,
+//       required this.xp,
+//       required this.team,
+//       required this.age});
+//   void sayHello() {
+//     print("Hello my name is $name");
+//   }
+// }
+// void main() {
+//   var player = Player(
+//     name: "Lee",
+//     xp: 1,
+//     team: "Red",
+//     age: 12,
+//   );
+// }
+
+// // 5.4 Class Named Constructor
+// // 기본생성자에 독립적으로 작용되는 네임드 생성자를 만들수 있다. 네임드 생성자는 : 이후 부분에서 초기화를 진행한다
+// class Player {
+//   final String name;
+//   int xp, age;
+//   String team;
+//   Player(
+//       {required this.name,
+//       required this.xp,
+//       required this.team,
+//       required this.age});
+//   Player.createBluePlayer({required String name, required int age})
+//       : this.age = age,
+//         this.name = name,
+//         this.xp = 0,
+//         this.team = "Blue";
+//   Player.createRedPlayer({required this.name, required this.age})
+//       : this.xp = 0,
+//         this.team = "Red";
+//   void sayHello() {
+//     print("Hello my name is $name, $age");
+//   }
+// }
+// void main() {
+//   var player1 = Player.createBluePlayer(name: "Kim", age: 21);
+//   var player2 = Player.createRedPlayer(name: "Lee", age: 30);
+//   player1.sayHello();
+//   player2.sayHello();
+// }
+
+class Player {
+  final String name;
+  int age;
+  Player.fromJson(Map<String, dynamic> playerJson)
+      : name = playerJson['name'],
+        age = playerJson['age'];
+  void sayHello() {
+    print("Hi my name is $name");
+  }
 }
 
 void main() {
-  print(hello(name: "Lee", age: 20, country: "Korean"));
+  var apiData = [
+    {"name": "Lee", "age": 20},
+    {"name": "Kim", "age": 20},
+    {"name": "Han", "age": 20},
+  ];
+  apiData.forEach((playerJson) {
+    var player = Player.fromJson(playerJson);
+    player.sayHello();
+  });
 }
+// 5.5 Class 
