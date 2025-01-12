@@ -373,26 +373,143 @@
 //   player2.sayHello();
 // }
 
-class Player {
-  final String name;
-  int age;
-  Player.fromJson(Map<String, dynamic> playerJson)
-      : name = playerJson['name'],
-        age = playerJson['age'];
-  void sayHello() {
-    print("Hi my name is $name");
-  }
-}
+// // recap
+// class Player {
+//   final String name;
+//   int age;
+//   Player.fromJson(Map<String, dynamic> playerJson)
+//       : name = playerJson['name'],
+//         age = playerJson['age'];
+//   void sayHello() {
+//     print("Hi my name is $name");
+//   }
+// }
+// void main() {
+//   var apiData = [
+//     {"name": "Lee", "age": 20},
+//     {"name": "Kim", "age": 20},
+//     {"name": "Han", "age": 20},
+//   ];
+//   apiData.forEach((playerJson) {
+//     var player = Player.fromJson(playerJson);
+//     player.sayHello();
+//   });
+// }
 
-void main() {
-  var apiData = [
-    {"name": "Lee", "age": 20},
-    {"name": "Kim", "age": 20},
-    {"name": "Han", "age": 20},
-  ];
-  apiData.forEach((playerJson) {
-    var player = Player.fromJson(playerJson);
-    player.sayHello();
-  });
-}
-// 5.5 Class 
+// // 5.5 Class Cascade Notation
+// // 중복되는 player.을 .. 으로 축약이 가능하다.
+// class Player {
+//   String name;
+//   int xp;
+//   String team;
+//   Player({required this.name, required this.xp, required this.team});
+//   void sayHello() {
+//     print("Hello my name is $name");
+//   }
+// }
+// void main() {
+//   var player = Player(name: "Lee", xp: 0, team: "Red")
+//     ..name = "Kim"
+//     ..xp = 20
+//     ..team = "Blue";
+// }
+
+// // 5.6 Class Enums
+// // Enums은 실수를 방지할 수 있다. color,margin등 고정된 값을 직접 작성하지 않고
+// // 하나의 카테고리에 담아 거기서 저장된 값만 뽑아 쓰게 해준다.
+// // ""와 같이 텍스트 형식으로 작성할 필요 없다.
+// enum Team { Red, Blue }
+// enum XPLevel { beginner }
+// class Player {
+//   String name;
+//   XPLevel xp;
+//   Team team;
+//   Player({required this.name, required this.xp, required this.team});
+//   void sayHello() {
+//     print("Hello my name is $name $team");
+//   }
+// }
+// void main() {
+//   var player = Player(name: "Lee", xp: XPLevel.beginner, team: Team.Blue)
+//     ..name = "Kim"
+//     ..xp = XPLevel.beginner
+//     ..team = Team.Red
+//     ..sayHello();
+// }
+
+// // 5.7 Class Abstract Class (추상클래스)
+// // 추상화 클래스는 객체생성할 수 없다. 다른 클래스들이 직접 구현 해야하는 매소드들을 모아놓은 청사진이라고 볼 수 있다.
+// // 상속을해서 매소드 작성을 고정할 수 있다.
+// abstract class Human{
+//   void walk(); // walk매소드는 void를 반환한다.
+// }
+// class Player extends Human {
+//   String name;
+//   int xp;
+//   String team;
+//   Player({required this.name, required this.xp, required this.team}) {}
+//   @override
+//   void walk() {
+//     // TODO: implement walk
+//   }
+// }
+// void main() {
+//   var player = Player(name: "Lee", xp: 0, team: "Red");
+// }
+
+// // 5.8 class Inheritance
+// // 상속을해 부모의 프로퍼티와 매소드를 자식class에서도 사용이 가능하다.
+// // 부모class에 있는 프로퍼티를 사용할려면 생성자에 :super()를 사용하면 된다.
+// // mina함수에서 자식class로 부모class의 매소드를 호출이 가능하다.
+// class Human {
+//   final String name;
+//   Human({required this.name});
+//   void sayHello() {
+//     print("Hi my name is $name");
+//   }
+// }
+// enum Team { Red, Blue }
+// class Player extends Human {
+//   final Team team;
+//   // super은 확장한 class를 가르킨다.
+//   Player({required this.team, required String name}) : super(name: name);
+//   @override
+//   void sayHello() {
+//     super.sayHello();
+//     print("and I play for $team");
+//   }
+// }
+// void main() {
+//   var player = Player(team: Team.Red, name: "Lee");
+//   player.sayHello();
+// }
+
+// 5.9 class Mixins
+// Mixin은 flutter에서 자주 사용할게 될것이다.
+// Mixin은 생성자가 없는 클래스를 의미한다. 클래스에 프로퍼티들을 추가하거나 할때 사용한다.
+// Mixin은 재사용이 가능하다
+// mixin Strong {
+//   final double strenghtLevel = 15.99;
+// }
+// mixin QuickRunner {
+//   void runQuick() {
+//     print("Ruuuunnnn!!!");
+//   }
+// }
+// enum Team { Red, Blue }
+// mixin Tall {
+//   late double height = 1.99;
+// }
+// class Player with Strong, QuickRunner, Tall {
+//   final Team team;
+//   Player({required this.team, required double height}) {
+//     this.height = height;
+//   }
+//   void myHeight() {
+//     print("Hello my height $height");
+//   }
+// }
+// void main() {
+//   var player = Player(team: Team.Red, height: 10);
+//   player.myHeight();
+// }
