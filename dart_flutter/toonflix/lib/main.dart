@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:toonflix/%08screens/home_screen.dart';
 // import 'package:toonflix/widget/button.dart';
 // import 'package:toonflix/widget/currency_card.dart';
 
@@ -220,93 +221,114 @@ void main() {
 // 플러터는 앱의 모든 스타일을 한 곳에서 지정할 수 있는 기능이 있다.
 // theme을 만들고 자식에게 전달하기위해 bulidContext를 이용해야 한다.
 
-// 2.3 Widget Lifecycle
-// 이벤트에 반응한다.
-// initSate는 상태를 초기하기 윈한 메서드이다.
-// int a = 0;으로 초기화가 가능한데 왜 필요한가 보통은 필요없다.
-// 부모 요소에 의존하는 데이터를 초기화해야 하는 경우
-// 데이터 초기하기 위해 context를 사용하게 될경우 API에서 업데이트 할때 사용된다.
-// initSate는 bulid메서드 보다 먼저 호출 되어야 하고 오직 단 한 번만 호출된다.
-class App extends StatefulWidget {
+// // 2.3 Widget Lifecycle
+// // 이벤트에 반응한다.
+// // initSate는 상태를 초기하기 윈한 메서드이다.
+// // int a = 0;으로 초기화가 가능한데 왜 필요한가 보통은 필요없다.
+// // 부모 요소에 의존하는 데이터를 초기화해야 하는 경우
+// // 데이터 초기하기 위해 context를 사용하게 될경우 API에서 업데이트 할때 사용된다.
+// // initSate는 bulid메서드 보다 먼저 호출 되어야 하고 오직 단 한 번만 호출된다.
+// class App extends StatefulWidget {
+//   const App({super.key});
+//   @override
+//   State<App> createState() => _AppState();
+// }
+// class _AppState extends State<App> {
+//   bool showTitle = true;
+//   void toggleTitle() {
+//     setState(() {
+//       showTitle = !showTitle;
+//     });
+//   }
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       theme: ThemeData(
+//         textTheme: const TextTheme(
+//           titleLarge: TextStyle(
+//             color: Colors.red,
+//           ),
+//         ),
+//       ),
+//       home: Scaffold(
+//         body: Center(
+//           child: Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: [
+//               showTitle ? const MyLargeTitle() : const Text("Not thing!"),
+//               IconButton(
+//                 onPressed: toggleTitle,
+//                 icon: const Icon(Icons.remove_red_eye),
+//               )
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+// class MyLargeTitle extends StatefulWidget {
+//   const MyLargeTitle({
+//     super.key,
+//   });
+//   @override
+//   State<MyLargeTitle> createState() => _MyLargeTitleState();
+// }
+// class _MyLargeTitleState extends State<MyLargeTitle> {
+//   @override
+//   void initState() {
+//     // TODO: implement initState
+//     super.initState(); // initSate사용할떄 super.initState();호출해야 한다.
+//     print("Hello");
+//   }
+// // 위젯이 스크린에서 제가될 떄 호출되는 메서드이다.
+// // API 업데이트나 이벤트 리스너를 취소 하거나 form의 리스너에서 벅어나고 싶을때 사용한다.
+// // 위젯트리에서 제거되기 전에 무언가를 취소할떄 사용한다.
+//   @override
+//   void dispose() {
+//     // TODO: implement dispose
+//     super.dispose();
+//     print("dipose!");
+//   }
+//   @override
+//   Widget build(BuildContext context) {
+//     print("bulid");
+//     return Text(
+//       "My Large Title",
+//       style: TextStyle(
+//         fontSize: 30,
+//         color: Theme.of(context).textTheme.titleLarge!.color,
+//       ),
+//     );
+//   }
+// }
+
+// Pomodoro App
+// class App extends StatelessWidget {
+//   const App({super.key});
+//   @override
+//   Widget build(BuildContext context) {
+//     // TODO: implement build
+//     return MaterialApp(
+//       theme: ThemeData(
+//           scaffoldBackgroundColor: const Color(0xFFE7626C),
+//           textTheme: const TextTheme(
+//             headlineMedium: TextStyle(
+//               color: Color(0xFF232B55),
+//             ),
+//           ),
+//           cardColor: const Color(0xFFF4EDDB)),
+//       home: const HomeScreen(),
+//     );
+//   }
+// }
+
+// webtoonAPI
+class App extends StatelessWidget {
   const App({super.key});
 
   @override
-  State<App> createState() => _AppState();
-}
-
-class _AppState extends State<App> {
-  bool showTitle = true;
-
-  void toggleTitle() {
-    setState(() {
-      showTitle = !showTitle;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        textTheme: const TextTheme(
-          titleLarge: TextStyle(
-            color: Colors.red,
-          ),
-        ),
-      ),
-      home: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              showTitle ? const MyLargeTitle() : const Text("Not thing!"),
-              IconButton(
-                onPressed: toggleTitle,
-                icon: const Icon(Icons.remove_red_eye),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyLargeTitle extends StatefulWidget {
-  const MyLargeTitle({
-    super.key,
-  });
-
-  @override
-  State<MyLargeTitle> createState() => _MyLargeTitleState();
-}
-
-class _MyLargeTitleState extends State<MyLargeTitle> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState(); // initSate사용할떄 super.initState();호출해야 한다.
-    print("Hello");
-  }
-
-// 위젯이 스크린에서 제가될 떄 호출되는 메서드이다.
-// API 업데이트나 이벤트 리스너를 취소 하거나 form의 리스너에서 벅어나고 싶을때 사용한다.
-// 위젯트리에서 제거되기 전에 무언가를 취소할떄 사용한다.
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    print("dipose!");
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    print("bulid");
-    return Text(
-      "My Large Title",
-      style: TextStyle(
-        fontSize: 30,
-        color: Theme.of(context).textTheme.titleLarge!.color,
-      ),
-    );
+    return const Placeholder();
   }
 }
