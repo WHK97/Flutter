@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:toonflix/%08screens/home_screen.dart';
+import 'package:toonflix/service/api_service.dart';
 // import 'package:toonflix/%08screens/home_screen.dart';
 // import 'package:toonflix/widget/button.dart';
 // import 'package:toonflix/widget/currency_card.dart';
 
 void main() {
+  ApiService().getTodaysToons();
   runApp(const App());
 }
 
@@ -329,6 +332,8 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const MaterialApp(
+      home: HomeScreen(),
+    );
   }
 }
