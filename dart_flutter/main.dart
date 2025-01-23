@@ -275,12 +275,12 @@
 //   print(result);
 // }
 
-// 5.1 Class
-// Class를 가장많이 사용하기 때문에 매우 중요하다
-// class에서 property(변수)의 선언할떄 타입을 사용해 정의한다.
-// Method와 Function차이
-// Method: 클래스 내부, 객체를 통해 호출
-// Function: 클래스 외부, 함수명의로 호출
+// // 5.1 Class
+// // Class를 가장많이 사용하기 때문에 매우 중요하다
+// // class에서 property(변수)의 선언할떄 타입을 사용해 정의한다.
+// // Method와 Function차이
+// // Method: 클래스 내부, 객체를 통해 호출
+// // Function: 클래스 외부, 함수명의로 호출
 // class Player {
 //   String name = "Lee"; // property
 //   int xp = 1500;
@@ -374,6 +374,7 @@
 // }
 
 // // recap
+// // API를 받으면 그걸 class로 바꿔야 한다.
 // class Player {
 //   final String name;
 //   int age;
