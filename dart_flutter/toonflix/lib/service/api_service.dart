@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:toonflix/models/webtoon_detail_model.dart';
 import 'package:toonflix/models/webtoon_model.dart';
 // API를 받은 값을 우리가 class로 사용이 가능하도록 바꿔야 한다. webtoon_model.dart에서
 
@@ -35,6 +36,17 @@ class ApiService {
       }
 
       return webtoonInstancs;
+    }
+    throw Error();
+  }
+
+  static Future<WebtoonDetailModel> getToonById(String id) async {
+    final url = Uri.parse("$baseUrl/$id");
+    final respnse = await http.get(url);
+    if (respnse.statusCode == 200) {
+      final webtoon = jsonDecode(respnse.body);
+      WebtoonDetailModel.fromJson(webtoon);
+      return WebtoonDetailModel.fromJson(webtoon);
     }
     throw Error();
   }
